@@ -1,0 +1,11 @@
+.title-wrapper {
+  @apply mb-12;
+}
+
+.title {
+  @apply text-gray-300 text-5xl font-semibold -mb-1;
+}
+
+.subtitle {
+  @apply text-gray-400 text-xl font-light tracking-widest	pl-2.5;
+}
