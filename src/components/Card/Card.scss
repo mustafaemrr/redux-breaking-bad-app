@@ -1,0 +1,11 @@
+.card {
+  @apply rounded-lg p-4 bg-slate-800 my-4 first:mt-0;
+
+  &__image {
+    @apply w-full mb-3;
+  }
+  
+  &__title {
+    @apply text-white text-xl;
+  }
+}
