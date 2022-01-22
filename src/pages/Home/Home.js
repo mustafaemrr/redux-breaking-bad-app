@@ -11,39 +11,41 @@ import './Home.scss';
 
 function Home() {
   const data = useSelector((state) => state.characters.items);
-  const isLoading = useSelector((state) => state.characters.isLoading);
+  const status = useSelector((state) => state.characters.status);
   const error = useSelector((state) => state.characters.error);
   const hasNextPage = useSelector(state => state.characters.hasNextPage);
 
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchCharacters());
-  }, [dispatch])
+    if( status === 'idle' ) {
+      dispatch(fetchCharacters());
+    }
+  }, [dispatch, status])
 
   return (
     <>
       <Title title="The Breaking Bad" subtitle="CHARACTERS" />
         {
-          isLoading && (
+          status === 'loading' && (
             <Loading />
           )
         }
         {
-          error && (
+          status === 'failed' && (
             <Error message={error} />
           )
         }
       <div className="list box-border md:masonry before:box-inherit after:box-inherit">
         {
           data.map((item) => (
-            <Card key={item.char_id} image={item.img} title={item.name} />
+            <Card key={item.char_id} image={item.img} title={item.name} id={item.char_id}/>
           ))
         }
       </div>
         {
           hasNextPage && (
-            <Button loading={isLoading}/>
+            <Button loading={status === 'loading'}/>
           )
         }
         {
