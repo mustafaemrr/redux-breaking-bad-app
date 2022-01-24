@@ -2,6 +2,7 @@ import {useState, useEffect} from 'react';
 import { useParams } from "react-router-dom";
 import axios from 'axios';
 import Loading from '../Loading';
+import './Detail.scss';
 
 function Detail() {
   const { char_id } = useParams();
@@ -16,16 +17,21 @@ function Detail() {
   }, [char_id]);
 
   return (
-    <div>
+    <>
       {loading && <Loading />}
       { char && (
-        <div>
-          <h1>{char.name}</h1>
-          <img src={char.img} alt="" />
+        <div className='detail'>
+          <div className="detail__left">
+            <img src={char.img} alt="" />
+          </div>
+          <div className="detail__right">
+            <h1 className='detail__name'>{char.name}</h1>
+            <h2 className='detail__nickname'>{char.nickname}</h2>
+          </div>
         </div>
       )
       }
-    </div>
+    </>
   );
 }
 
