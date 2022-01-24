@@ -1,0 +1,19 @@
+.detail {
+  @apply container flex;
+
+  &__left {
+    @apply w-2/5 rounded-lg p-4 bg-slate-800;
+  }
+
+  &__right {
+    @apply px-4;
+  }
+
+  &__name {
+    @apply text-white text-5xl font-semibold -mb-1;
+  }
+
+  &__nickname {
+    @apply text-gray-400 text-xl font-light tracking-widest;
+  }
+}
